@@ -10,6 +10,9 @@ class SimpleWordTokenizer:
 
     """
 
+    UNKNOWN_TOKEN = "<UNK>"
+    PAD_TOKEN = "<PAD>"
+
     def __init__(self, corpus: list[str], vocabulary: list[str] | None = None):
         """
         Initializes the tokenizer with texts in corpus or with a vocabulary.
@@ -28,6 +31,8 @@ class SimpleWordTokenizer:
 
             # Create a vocabulary comprising of unique tokens.
             self.vocabulary = self.build_vocabulary(tokens)
+
+            self.voabulary = ([self.PAD_TOKEN]+vocabulary+[self.UNKNOWN_TOKEN])
 
         else:
             self.vocabulary = vocabulary
